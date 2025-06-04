@@ -40,7 +40,6 @@ pipeline {
             steps {
                 sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
                 sh "docker rmi ${IMAGE_NAME}:latest"
-                sh "cd .."
             }
         }
         stage('k8s source code pull from github') {
@@ -50,7 +49,6 @@ pipeline {
         }
         stage('Updating Kubernetes deployment file') {
             steps {
-                sh "cd demo-cd"
                 sh "cat k8s/demo-deployment.yaml"
                 // Construct the sed command to change only line 18
                 sh """sed -i '18s#image:.*#image: ${IMAGE_NAME}:${IMAGE_TAG}#' k8s/demo-deployment.yaml"""
