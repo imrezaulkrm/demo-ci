@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demo CI/CD</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f2027;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container h1 {
+      font-size: 4rem;
+      color: #fff;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #00c6ff, 0 0 20px #00c6ff;
+      }
+      to {
+        text-shadow: 0 0 20px #0072ff, 0 0 40px #0072ff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Demo CI/CD</h1>
+  </div>
+</body>
+</html>
