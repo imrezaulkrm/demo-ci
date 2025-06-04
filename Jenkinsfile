@@ -17,7 +17,7 @@ pipeline {
         }
         stage('source code pull from github') {
             steps {
-                git branch: 'main', url: 'https://github.com/imrezaulkrm/Studentify.git'
+                git branch: 'main', url: 'https://github.com/imrezaulkrm/demo-ci.git'
             }
         }
         stage('Build Docker Image'){
@@ -48,9 +48,9 @@ pipeline {
             steps {
                 sh "git checkout main"
                 sh "cat k8s/angular-deployment.yml"
-                // Construct the sed command to change only line 17
-                sh """sed -i '17s#image:.*#image: ${IMAGE_NAME}:${IMAGE_TAG}#' k8s/angular-deployment.yml"""
-                sh "cat k8s/angular-deployment.yml"
+                // Construct the sed command to change only line 18
+                sh """sed -i '18s#image:.*#image: ${IMAGE_NAME}:${IMAGE_TAG}#' k8s/demo-deployment.yaml"""
+                sh "cat k8s/demo-deployment.yaml"
             }
         }
 
@@ -61,10 +61,10 @@ pipeline {
                     sh 'git checkout main'
                     sh 'git config --global user.name "rezaul"'
                     sh 'git config --global user.email "sayem010ahmed@gmail.com"'
-                    sh 'git add k8s/angular-deployment.yml'
+                    sh 'git add .'
                     sh 'git commit -m "Updated the deployment file"'
                     withCredentials([usernamePassword(credentialsId: 'Github', passwordVariable: 'gpass', usernameVariable: 'githubuser')]) {
-                        sh "git push https://$githubuser:$gpass@github.com/imrezaulkrm/Studentify.git main"
+                        sh "git push https://$githubuser:$gpass@github.com/imrezaulkrm/demo-ci.git main"
                     }
                 }
             }
