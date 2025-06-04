@@ -71,4 +71,10 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo 'Cleaning up workspace after build...'
+            cleanWs() // this will delete all files in workspace after job finishes
+        }
+    }
 }
