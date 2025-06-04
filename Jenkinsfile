@@ -43,7 +43,7 @@ pipeline {
                 sh "cd .."
             }
         }
-        stage('source code pull from github') {
+        stage('k8s source code pull from github') {
             steps {
                 git branch: 'main', url: 'https://github.com/imrezaulkrm/demo-cd.git'
             }
