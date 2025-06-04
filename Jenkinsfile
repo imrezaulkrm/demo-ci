@@ -47,7 +47,7 @@ pipeline {
         stage('Updating Kubernetes deployment file') {
             steps {
                 sh "git checkout main"
-                sh "cat k8s/angular-deployment.yml"
+                sh "cat k8s/demo-deployment.yaml"
                 // Construct the sed command to change only line 18
                 sh """sed -i '18s#image:.*#image: ${IMAGE_NAME}:${IMAGE_TAG}#' k8s/demo-deployment.yaml"""
                 sh "cat k8s/demo-deployment.yaml"
@@ -59,7 +59,7 @@ pipeline {
             steps {
                 script {
                     sh 'git checkout main'
-                    sh 'git config --global user.name "rezaul"'
+                    sh 'git config --global user.name "imrezaulkrm"'
                     sh 'git config --global user.email "sayem010ahmed@gmail.com"'
                     sh 'git add .'
                     sh 'git commit -m "Updated the deployment file"'
